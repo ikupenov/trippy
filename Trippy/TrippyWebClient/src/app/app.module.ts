@@ -1,7 +1,8 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
-import { TestComponent, CoreModule } from "@tpy/core";
+import { CoreModule, TestComponent } from "@tpy/core";
+import { SharedModule } from "@tpy/shared";
 
 import { AppComponent } from "./app.component";
 
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
     ],
     imports: [
         RouterModule.forRoot(appRoutes),
+        SharedModule,
         BrowserModule,
         CoreModule
     ],
