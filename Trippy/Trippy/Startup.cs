@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace Trippy
 {
@@ -38,22 +36,17 @@ namespace Trippy
             }
 
             app.UseMvcWithDefaultRoute();
-            //app.Use(WebClientHandler);
+            app.MapWhen(x => x.Request.Path.Value.StartsWith("/client") && !Path.HasExtension(x.Request.Path.Value), builder =>
+            {
+                builder.UseMvc(routes =>
+                {
+                    routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "SpaClient" });
+                });
+            });
+
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
         }
-
-        //private async Task WebClientHandler(HttpContext context, Func<Task> next)
-        //{
-        //    await next();
-
-        //    if (!Path.HasExtension(context.Request.Path.Value) &&
-        //        !context.Request.Path.Value.StartsWith("/api/"))
-        //    {
-        //        context.Request.Path = "/client/index.html";
-        //        await next();
-        //    }
-        //}
     }
 }

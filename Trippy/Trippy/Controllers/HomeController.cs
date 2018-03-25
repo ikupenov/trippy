@@ -33,5 +33,10 @@ namespace Trippy.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult SpaClient()
+        {
+            return File("/client/index.html", "text/html");
+        }
     }
 }
