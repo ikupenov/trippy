@@ -53,7 +53,7 @@ namespace Trippy
         {
             app.UseMvc(routes =>
             {
-                routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "SpaClient" });
+                routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Client" });
             });
         }
     }

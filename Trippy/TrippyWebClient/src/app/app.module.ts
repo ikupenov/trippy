@@ -1,26 +1,21 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { RouterModule, Routes } from "@angular/router";
-import { CoreModule, TestComponent } from "@tpy/core";
+import { CoreModule } from "@tpy/core";
+import { LocationModule } from "@tpy/location";
 import { SharedModule } from "@tpy/shared";
 
 import { AppComponent } from "./app.component";
-
-const appRoutes: Routes = [
-    { path: "test", component: TestComponent }
-];
+import { AppRoutesModule } from "./app.routes";
 
 @NgModule({
-    declarations: [
-        AppComponent
-    ],
+    declarations: [AppComponent],
     imports: [
-        RouterModule.forRoot(appRoutes),
-        SharedModule,
+        SharedModule.forRoot(),
+        AppRoutesModule,
         BrowserModule,
-        CoreModule
+        CoreModule,
+        LocationModule
     ],
-    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

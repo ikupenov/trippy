@@ -1,0 +1,25 @@
+<div class="tpy-input">
+    <label *ngIf="label" class="tpy-field_input_label" [for]="name">{{label}}</label>
+
+    <input
+        class="tpy-field_input"
+        [attr.id]="name"
+        [attr.type]="type"
+        [attr.name]="name"
+        [attr.placeholder]="placeholder"
+        [pattern]="pattern"
+        [minlength]="minlength"
+        [maxlength]="maxlength"
+        [required]="required"
+        [readonly]="readonly"
+        [disabled]="disabled"
+        [autofocus]="autofocus"
+        [(ngModel)]="value"
+        (blur)="onBlur()"
+        (focus)="onFocus()"
+        (input)="onInput($event)"
+        (keyup.enter)="onEnter($event)">
+
+        <p *ngIf="errorMessage" class="tpy-field_input_error">{{errorMessage}}</p>
+        <p *ngIf="hint" class="tpy-field_input_hint">{{hint}}</p>
+</div>

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Trippy.Models;
 
 namespace Trippy.Controllers
@@ -34,7 +30,7 @@ namespace Trippy.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult SpaClient()
+        public IActionResult Client()
         {
             return File("/client/index.html", "text/html");
         }
